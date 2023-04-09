@@ -31,3 +31,11 @@
 .color-card.emerald {
   --card-accent: hsl(140, 52%, 55%);
 }
+
+.color-card.orchid {
+  --card-accent: hsl(302, 59%, 65%);
+}
+
+.color-card.purple {
+  --card-accent: hsl(272, 100%, 55%);
+}

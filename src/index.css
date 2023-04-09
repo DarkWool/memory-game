@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  color: white;
   background-color: hsl(225, 18%, 4%);
 }
 
@@ -53,4 +54,12 @@ a:hover {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.game_cards-board {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(5, 225px);
+  grid-template-rows: 1fr;
+  gap: 35px;
 }
