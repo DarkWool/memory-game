@@ -5,7 +5,10 @@ export function ColorCard({ color, onClick }) {
     <button
       type="button"
       className={`color-card ${color.styles}`}
-      onClick={(e) => onClick(color.id, color.name)}
+      onClick={(e) => {
+        console.log(`-- ${color.name}`);
+        onClick(color.id);
+      }}
     >
       <div className="color-card_bg"></div>
       <div className="color-card_content">{color.name}</div>

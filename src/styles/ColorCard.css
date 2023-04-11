@@ -39,3 +39,59 @@
 .color-card.purple {
   --card-accent: hsl(272, 100%, 55%);
 }
+
+.color-card.electric-purple {
+  --card-accent: #9400D3;
+}
+
+.color-card.electric-indigo {
+  --card-accent: #4B0082;
+}
+
+.color-card.blue-crayola {
+  --card-accent: #0077FF;
+}
+
+.color-card.raspberry {
+  --card-accent: #EA185B;
+}
+
+.color-card.battleship-gray {
+  --card-accent: #8A817C;
+}
+
+.color-card.mint {
+  --card-accent: #1EC299;
+}
+
+.color-card.gold {
+  --card-accent: #FFD500;
+}
+
+.color-card.jasmine {
+  --card-accent: #FFEB85;
+}
+
+.color-card.citrine {
+  --card-accent: #E7C726;
+}
+
+.color-card.gold-metallic {
+  --card-accent: #DCB60E;
+}
+
+.color-card.screamin-green {
+  --card-accent: #A5FF85;
+}
+
+.color-card.lime-green {
+  --card-accent: #07C90E;
+}
+
+.color-card.harlequin {
+  --card-accent: #4DFF00;
+}
+
+.color-card.sgbus-green {
+  --card-accent: #3DEA34;
+}

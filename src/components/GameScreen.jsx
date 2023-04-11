@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ColorCard } from "./ColorCard";
 import { colorsData } from "../colorsData";
 
@@ -13,34 +13,59 @@ function shuffle(array) {
   return shuffledArr;
 }
 
+const scorePerLevel = [5, 12, 22, 34, 49];
+
 export function GameScreen() {
+  const [level, setLevel] = useState(1);
   const [score, setScore] = useState(0);
   const [clickedColors, setClickedColors] = useState([]);
 
-  console.log(clickedColors);
-
-  function handleColorClick(id, color) {
-    console.log(`CLICKED ON: ${color}`);
-
+  function handleColorClick(id) {
     if (clickedColors.includes(id)) {
       alert("Game over, item clicked twice");
       return resetGame();
     }
 
     setScore((s) => s + 1);
-    setClickedColors([...clickedColors, id]);
+    if (!updateLevel()) setClickedColors([...clickedColors, id]);
+  }
+
+  function updateLevel() {
+    const nextScore = score + 1;
+    const scoreNeeded = scorePerLevel[level - 1];
+    if (nextScore === scoreNeeded) {
+      // Start the next level by resetting the clicked colors
+      setClickedColors([]);
+      setLevel((l) => l + 1);
+      return true;
+    }
   }
 
   function resetGame() {
+    setLevel(1);
     setScore(0);
     setClickedColors([]);
   }
 
-  const shuffledColors = shuffle(colorsData);
+  // Get a random array from data for the current level
+  const levelColors = useMemo(() => {
+    const index = level - 1;
+    const numberOfCards =
+      index === 0
+        ? scorePerLevel[0]
+        : scorePerLevel[index] - scorePerLevel[index - 1];
+
+    return shuffle(colorsData).slice(0, numberOfCards);
+  }, [level]);
+  // Re-shuffle the level colors / cards so they are on different position each time
+  const shuffledColors = shuffle(levelColors);
 
   return (
     <>
       <header>
+        <div>
+          <p>Level: {level}</p>
+        </div>
         <p>
           Score: <span>{score}</span>
         </p>

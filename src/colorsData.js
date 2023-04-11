@@ -1,28 +1,53 @@
 const colorsData = [
   {
-    id: "c1",
-    name: "Lapis Lazuli",
-    styles: "lazuli",
-  },
-  {
-    id: "c2",
-    name: "Emerald",
-    styles: "emerald",
-  },
-  {
-    id: "c3",
-    name: "Purple",
-    styles: "purple",
-  },
-  {
     id: "c4",
-    name: "Viva Magenta",
-    styles: "",
+    name: "Raspberry",
+    styles: "raspberry",
   },
   {
-    id: "c5",
-    name: "Orchid",
-    styles: "orchid",
+    id: "c6",
+    name: "Mint",
+    styles: "mint",
+  },
+  {
+    id: "c7",
+    name: "Gold",
+    styles: "gold",
+  },
+  {
+    id: "c8",
+    name: "Jasmine",
+    styles: "jasmine",
+  },
+  {
+    id: "c9",
+    name: "Citrine",
+    styles: "citrine",
+  },
+  {
+    id: "c10",
+    name: "Gold Metallic",
+    styles: "gold-metallic",
+  },
+  {
+    id: "c11",
+    name: "Screamin' Green",
+    styles: "screamin-green",
+  },
+  {
+    id: "c12",
+    name: "Lime Green",
+    styles: "lime-green",
+  },
+  {
+    id: "c13",
+    name: "Harlequin",
+    styles: "harlequin",
+  },
+  {
+    id: "c14",
+    name: "SGBUS Green",
+    styles: "sgbus-green",
   },
 ];
 
