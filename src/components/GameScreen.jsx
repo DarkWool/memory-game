@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { ColorCard } from "./ColorCard";
 import { colorsData } from "../colorsData";
+import { GameHeader } from "./GameHeader";
 
 function shuffle(array) {
   let shuffledArr = [...array];
@@ -27,6 +28,7 @@ export function GameScreen() {
     }
 
     setScore((s) => s + 1);
+    
     if (!updateLevel()) setClickedColors([...clickedColors, id]);
   }
 
@@ -62,14 +64,7 @@ export function GameScreen() {
 
   return (
     <>
-      <header>
-        <div>
-          <p>Level: {level}</p>
-        </div>
-        <p>
-          Score: <span>{score}</span>
-        </p>
-      </header>
+      <GameHeader score={score} level={level} />
       <section className="game_cards-board">
         {shuffledColors.map((color) => {
           return (
