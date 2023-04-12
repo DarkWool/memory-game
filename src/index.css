@@ -101,6 +101,14 @@ a:hover {
   border: 1px solid hsl(220, 9.1%, 14.5%);
 }
 
+.game_score {
+  transition: 0.2s all ease;
+}
+
+.game_score.scale {
+  transform: scale(1.2);
+}
+
 .game_cards-board {
   display: flex;
   justify-content: center;
