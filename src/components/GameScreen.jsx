@@ -76,7 +76,10 @@ export function GameScreen() {
             <ColorCard
               key={color.id}
               color={color}
-              onClick={handleColorClick}
+              onClick={() => {
+                console.log(`-- ${color.name}`);
+                handleColorClick(color.id);
+              }}
             />
           );
         })}
