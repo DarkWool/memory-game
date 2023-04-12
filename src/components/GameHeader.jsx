@@ -1,8 +1,8 @@
-export function GameHeader({ score, level }) {
+export function GameHeader({ bestScore, score, level }) {
   return (
     <header className="game_header">
       <div>
-        <span className="game_header-best">Best: 0</span>
+        <span className="game_header-best">Best: {bestScore}</span>
       </div>
       <div className="game_header-middle">
         <h1 className="menu_title game_header-title">

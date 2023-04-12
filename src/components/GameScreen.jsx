@@ -18,17 +18,17 @@ const scorePerLevel = [5, 12, 22, 34, 49];
 
 export function GameScreen() {
   const [level, setLevel] = useState(1);
+  const [bestScore, setBestScore] = useState(0);
   const [score, setScore] = useState(0);
   const [clickedColors, setClickedColors] = useState([]);
 
   function handleColorClick(id) {
     if (clickedColors.includes(id)) {
-      alert("Game over, item clicked twice");
-      return resetGame();
+      return handleGameOver();
     }
 
     setScore((s) => s + 1);
-    
+
     if (!updateLevel()) setClickedColors([...clickedColors, id]);
   }
 
@@ -41,6 +41,13 @@ export function GameScreen() {
       setLevel((l) => l + 1);
       return true;
     }
+  }
+
+  function handleGameOver() {
+    if (score > bestScore) setBestScore(score);
+
+    alert("Game over, item clicked twice");
+    return resetGame();
   }
 
   function resetGame() {
@@ -64,7 +71,7 @@ export function GameScreen() {
 
   return (
     <>
-      <GameHeader score={score} level={level} />
+      <GameHeader bestScore={bestScore} score={score} level={level} />
       <section className="game_cards-board">
         {shuffledColors.map((color) => {
           return (
