@@ -1,6 +1,8 @@
 .color-card {
   --card-accent: magenta;
   position: relative;
+  max-width: 210px;
+  width: 100%;
   cursor: pointer;
   text-align: left;
   font-weight: 600;
@@ -10,7 +12,7 @@
 
 .color-card_bg {
   height: 100%;
-  min-height: 275px;
+  min-height: 230px;
   width: 100%;
   background-color: var(--card-accent);
 }
@@ -22,6 +24,14 @@
   width: 100%;
   background-color: black;
   padding: 20px;
+}
+
+.menu_deco-col > .color-card {
+  max-width: 290px;
+}
+
+.menu_deco-col .color-card_bg {
+  min-height: 275px;
 }
 
 .color-card.lazuli {
