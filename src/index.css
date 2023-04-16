@@ -254,6 +254,8 @@ button {
 .btn-circular {
   padding: 10px;
   border-radius: 100%;
+  z-index: 20;
+  position: relative;
 }
 
 @media (hover: hover) {
