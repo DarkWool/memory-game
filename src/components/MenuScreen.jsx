@@ -1,4 +1,4 @@
-import { Heading } from "./Heading.jsx";
+import { Heading } from "./Heading";
 import { Button } from "./Button";
 import { Tooltip } from "./Tooltip";
 import { colorsData } from "../colorsData";
@@ -6,7 +6,7 @@ import { ColorCard } from "./ColorCard";
 
 export function MenuScreen({ onGameStart }) {
   return (
-    <>
+    <div className="menu-wrapper">
       <section className="menu">
         <div className="menu_content">
           <div className="d-inline-block">
@@ -62,6 +62,6 @@ export function MenuScreen({ onGameStart }) {
           <ColorCard color={colorsData[2]} inlineStyles={{ "--order": 2 }} />
         </div>
       </section>
-    </>
+    </div>
   );
 }

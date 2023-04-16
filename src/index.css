@@ -66,11 +66,18 @@ a:hover {
 }
 
 /* -------- Menu Screen -------- */
-.menu {
+.menu-wrapper {
   height: 100%;
+  display: flex;
+}
+
+.menu {
   display: flex;
   gap: 100px;
   align-items: center;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .menu_content {
