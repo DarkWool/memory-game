@@ -65,6 +65,12 @@ a:hover {
   padding: 2rem;
 }
 
+.root_deco-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 /* -------- Menu Screen -------- */
 .menu-wrapper {
   height: 100%;
