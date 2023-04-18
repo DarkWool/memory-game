@@ -66,6 +66,7 @@ a:hover {
 }
 
 .root_deco-img {
+  pointer-events: none;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -191,6 +192,35 @@ a:hover {
   margin-bottom: auto;
 }
 
+/* -------- Game over modal -------- */
+.game-over_title {
+  margin-bottom: 15px;
+  font-size: 3.6rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.game-over_status-face {
+  max-width: 125px;
+  margin: 0 auto 10px;
+}
+
+.game-over_btns-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.game-over {
+  max-width: 70ch;
+  padding: 60px 50px;
+  font-size: 1.4rem;
+  border: 1px solid hsl(194, 14%, 24%);
+  border-radius: 15px;
+  backdrop-filter: blur(40px);
+  background-color: hsla(206.7, 11.7%, 15.1%, 0.5);
+  box-shadow: 0px 6px 28px hsla(193, 22%, 55%, 0.2);
+}
+
 /* -------- Utilities -------- */
 .m-auto-h {
   margin-left: auto;
@@ -222,6 +252,14 @@ a:hover {
   text-stroke: 2px white;
 }
 
+.text-transform-upper {
+  text-transform: uppercase;
+}
+
+.title-underline {
+  text-decoration: underline 4px;
+}
+
 /* -------- Buttons -------- */
 button {
   appearance: none;
@@ -230,7 +268,8 @@ button {
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-accent {
   padding: 16px 50px;
   border-radius: 75px;
 }
@@ -243,13 +282,21 @@ button {
   background-color: hsl(207, 12%, 15%);
 }
 
-.btn-secondary {
-  border: 2px solid var(--accent-color);
+.btn-secondary,
+.btn-accent {
   font-weight: 800;
   font-size: 1.6rem;
+}
+
+.btn-secondary {
+  border: 2px solid var(--accent-color);
   color: var(--accent-color);
   fill: var(--accent-color);
   background-color: transparent;
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
 }
 
 .btn-primary:active,
