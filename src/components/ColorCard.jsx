@@ -8,7 +8,6 @@ export function ColorCard({ color, onClick, inlineStyles }) {
       onClick={onClick}
       style={inlineStyles}
     >
-      <div className="color-card_bg"></div>
       <div className="color-card_content">{color.name}</div>
     </button>
   );
