@@ -4,18 +4,8 @@ import { colorsData } from "../colorsData";
 import { GameHeader } from "./GameHeader";
 import { Modal } from "./Modal";
 import { Button } from "./Button";
+import { shuffle } from "../utils/shuffle";
 import sadFace from "../assets/disappointed-face.png";
-
-function shuffle(array) {
-  let shuffledArr = [...array];
-
-  for (let i = shuffledArr.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [shuffledArr[i], shuffledArr[j]] = [shuffledArr[j], shuffledArr[i]];
-  }
-
-  return shuffledArr;
-}
 
 const scorePerLevel = [5, 12, 22, 34, 49];
 
