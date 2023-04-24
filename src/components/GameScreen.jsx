@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { ColorCard } from "./ColorCard";
+import { CardsList } from "./CardsList";
 import { colorsData } from "../colorsData";
 import { GameHeader } from "./GameHeader";
 import { Modal } from "./Modal";
@@ -16,7 +16,7 @@ export function GameScreen() {
   const [score, setScore] = useState(0);
   const [clickedColors, setClickedColors] = useState([]);
 
-  function handleColorClick(id) {
+  function handleCardClick(id) {
     if (clickedColors.includes(id)) {
       return handleGameOver();
     }
@@ -66,20 +66,7 @@ export function GameScreen() {
   return (
     <>
       <GameHeader bestScore={bestScore} score={score} level={level} />
-      <section className="game_cards-board">
-        {shuffledColors.map((color) => {
-          return (
-            <ColorCard
-              key={color.id}
-              color={color}
-              onClick={() => {
-                console.log(`-- ${color.name}`);
-                handleColorClick(color.id);
-              }}
-            />
-          );
-        })}
-      </section>
+      <CardsList cards={shuffledColors} onCardClick={handleCardClick} />
 
       <Modal isVisible={isGameOver} styles="game-over">
         <div>
