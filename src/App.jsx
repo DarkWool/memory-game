@@ -4,16 +4,16 @@ import { GameScreen } from "./components/GameScreen";
 import colorNamesImg from "./assets/color-names-1x.png";
 
 function App() {
-  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [gameMode, setGameMode] = useState(null);
 
-  function handleGameStart() {
-    setIsGameStarted(true);
+  function handleGameStart(mode) {
+    if (mode) setGameMode(mode);
   }
 
   return (
     <>
-      {isGameStarted ? (
-        <GameScreen />
+      {gameMode ? (
+        <GameScreen mode={gameMode} />
       ) : (
         <MenuScreen onGameStart={handleGameStart} />
       )}

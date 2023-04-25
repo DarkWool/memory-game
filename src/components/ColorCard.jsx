@@ -1,14 +1,23 @@
 import "../styles/ColorCard.css";
 
-export function ColorCard({ color, onClick, inlineStyles }) {
+export function ColorCard({
+  color,
+  variant = "normal",
+  onClick,
+  inlineStyles,
+}) {
+  const cardStyles = `color-card color-card-${variant} ${color.styles}`;
+
   return (
     <button
       type="button"
-      className={`color-card ${color.styles}`}
+      className={cardStyles}
       onClick={onClick}
       style={inlineStyles}
     >
-      <div className="color-card_content">{color.name}</div>
+      {variant !== "expert" && (
+        <div className="color-card_content">{color.name}</div>
+      )}
     </button>
   );
 }

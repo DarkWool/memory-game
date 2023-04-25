@@ -51,9 +51,14 @@ export function MenuScreen({ onGameStart }) {
           <Heading level={2} styles="menu_subtitle">
             Memory Game
           </Heading>
-          <Button variant="secondary" onClick={onGameStart}>
-            PLAY
-          </Button>
+          <div className="menu_game-modes">
+            <Button variant="secondary" onClick={() => onGameStart("normal")}>
+              PLAY
+            </Button>
+            <Button variant="secondary" onClick={() => onGameStart("expert")}>
+              EXPERT MODE
+            </Button>
+          </div>
         </div>
 
         <div className="menu_deco-col">

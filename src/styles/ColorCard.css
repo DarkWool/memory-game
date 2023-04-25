@@ -2,16 +2,26 @@
   --card-accent: magenta;
   cursor: pointer;
   position: relative;
-  width: 100%;
-  max-width: 210px;
-  min-height: 275px;
   overflow: hidden;
   text-align: left;
   font-weight: 600;
-  box-shadow: 0px 4px 89px rgba(51, 152, 207, 0.3);
+  box-shadow: 0px 4px 89px hsla(201, 62%, 51%, 0.3);
+  box-shadow: 0px 4px 89px hsla(var(--box-shadow), 0.3);
   border: 1px solid var(--card-accent);
   color: var(--card-accent);
   background-color: var(--card-accent);
+}
+
+.color-card-normal {
+  width: 100%;
+  max-width: 210px;
+  min-height: 275px;
+}
+
+.color-card-expert {
+  border-radius: 100%;
+  width: 210px;
+  height: 210px;
 }
 
 .color-card_content {

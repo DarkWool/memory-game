@@ -9,7 +9,7 @@ import sadFace from "../assets/disappointed-face.png";
 
 const scorePerLevel = [5, 12, 22, 34, 49];
 
-export function GameScreen() {
+export function GameScreen({ mode }) {
   const [isGameOver, setIsGameOver] = useState(false);
   const [level, setLevel] = useState(1);
   const [bestScore, setBestScore] = useState(0);
@@ -66,15 +66,15 @@ export function GameScreen() {
   return (
     <>
       <GameHeader bestScore={bestScore} score={score} level={level} />
-      <CardsList cards={shuffledColors} onCardClick={handleCardClick} />
+      <CardsList
+        cards={shuffledColors}
+        cardsVariant={mode}
+        onCardClick={handleCardClick}
+      />
 
       <Modal isVisible={isGameOver} styles="game-over">
         <div>
-          <img
-            src={sadFace}
-            alt="Emoji of a sad face"
-            className="game-over_status-face"
-          />
+          <img src={sadFace} alt="Sad face" className="game-over_status-face" />
         </div>
         <div>
           <h2 className="game-over_title">

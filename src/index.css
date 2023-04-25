@@ -116,6 +116,12 @@ a:hover {
   margin-top: 50px;
 }
 
+.menu_game-modes {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
 .menu_help {
   position: absolute;
   left: 100%;
