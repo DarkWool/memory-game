@@ -17,7 +17,7 @@ export function GameScreen({ mode }) {
   const [clickedColors, setClickedColors] = useState([]);
 
   function handleCardClick(id) {
-    if (clickedColors.includes(id)) {
+    if (isGameOver || clickedColors.includes(id)) {
       return handleGameOver();
     }
 
