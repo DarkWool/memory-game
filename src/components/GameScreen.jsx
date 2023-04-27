@@ -16,8 +16,12 @@ export function GameScreen({ mode }) {
   const [score, setScore] = useState(0);
   const [clickedColors, setClickedColors] = useState([]);
 
-  function handleCardClick(id) {
-    if (isGameOver || clickedColors.includes(id)) {
+  function checkForGameOver(id) {
+    return clickedColors.includes(id);
+  }
+
+  function handleCardClick(id, turnResult) {
+    if (isGameOver || turnResult) {
       return handleGameOver();
     }
 
@@ -39,7 +43,6 @@ export function GameScreen({ mode }) {
 
   function handleGameOver() {
     if (score > bestScore) setBestScore(score);
-
     setIsGameOver(true);
   }
 
@@ -61,15 +64,20 @@ export function GameScreen({ mode }) {
     return shuffle(colorsData).slice(0, numberOfCards);
   }, [level, isGameOver]);
   // Re-shuffle the level colors / cards so they are on different position each time
-  const shuffledColors = shuffle(levelColors);
+  const shuffledColors = useMemo(() => {
+    return shuffle(levelColors);
+  }, [score]);
 
   return (
     <>
       <GameHeader bestScore={bestScore} score={score} level={level} />
       <CardsList
+        key={isGameOver}
+        score={score}
         cards={shuffledColors}
         cardsVariant={mode}
         onCardClick={handleCardClick}
+        checkForGameOver={checkForGameOver}
       />
 
       <Modal isVisible={isGameOver} styles="game-over">

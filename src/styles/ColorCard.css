@@ -60,6 +60,26 @@
   transform: translateY(100%);
 }
 
+/* -------- Appear / disappear transition -------- */
+.color-card::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  transition: 0.4s top ease;
+  top: 0%;
+}
+
+.color-card.color-card-enter-active::after,
+.color-card-enter-done::after {
+  top: -100%;
+}
+
+.color-card.color-card-exit::after {
+  top: 0%;
+}
+
 .menu_deco-col > .color-card {
   max-width: 290px;
 }
