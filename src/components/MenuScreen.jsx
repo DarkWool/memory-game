@@ -5,6 +5,31 @@ import { colorsData } from "../colorsData";
 import { ColorCard } from "./ColorCard";
 
 export function MenuScreen({ onGameStart }) {
+  const tooltipContent = (
+    <>
+      <div style={{ fill: "white", flexShrink: 0 }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
+        </svg>
+      </div>
+      <div>
+        <Heading level={2} styles="menu_tooltip-title">
+          How to play?
+        </Heading>
+        <p>
+          The goal is to avoid clicking the same color twice. After you click
+          one of the colors, they will be shuffled and you need to click on
+          another color, but <b>it can't be one that has been clicked before</b>{" "}
+          or the <b>game will be over.</b>
+        </p>
+        <p>
+          In <b>expert mode</b> you will have to trust in your eyes more than
+          ever for the colors will have no name this time!
+        </p>
+      </div>
+    </>
+  );
+
   return (
     <div className="menu-wrapper">
       <section className="menu">
@@ -32,8 +57,9 @@ export function MenuScreen({ onGameStart }) {
               Remember <br />
               <span className="text-stroke text-transparent">my</span> color
             </Heading>
+
             <div className="menu_help">
-              <Tooltip>
+              <Tooltip content={tooltipContent}>
                 <Button variant="secondary" styles="btn-circular">
                   <svg
                     width="24"
