@@ -9,7 +9,7 @@ export function CardsList({
   cards,
   cardsVariant,
   onCardClick,
-  checkForGameOver,
+  assessTurnOutcome,
 }) {
   const [cardsRevealed, setCardsRevealed] = useState(false);
   let timer = useRef(null);
@@ -44,9 +44,9 @@ export function CardsList({
                   if (!canClickCards) return;
                   canClickCards = false;
 
-                  const turnResult = checkForGameOver(color.id);
+                  const turnResult = assessTurnOutcome(color.id);
                   if (turnResult) {
-                    // The game should be over as soon as the card gets clicked
+                    // The game should immediately end if it has been won or lost
                     onCardClick(color.id, turnResult);
                     canClickCards = true;
                     return;

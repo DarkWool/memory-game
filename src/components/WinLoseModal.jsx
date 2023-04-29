@@ -48,7 +48,7 @@ const winData = {
 };
 
 export function WinLoseModal({ variant, isVisible, handleResetGame }) {
-  const data = variant === "gameOver" ? loseData : winData;
+  const data = variant === "lose" ? loseData : winData;
   const { img, title, desc } = data;
 
   return (

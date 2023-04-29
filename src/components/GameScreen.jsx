@@ -2,35 +2,46 @@ import { useState, useMemo } from "react";
 import { CardsList } from "./CardsList";
 import { colorsData } from "../colorsData";
 import { GameHeader } from "./GameHeader";
-import { Modal } from "./Modal";
-import { Button } from "./Button";
+import { WinLoseModal } from "./WinLoseModal";
 import { shuffle } from "../utils/shuffle";
-import sadFace from "../assets/disappointed-face.png";
 
 const scorePerLevel = [5, 12, 22, 34, 49];
+const GAMEOVER = "lose";
+const GAMEWON = "win";
 
-export function GameScreen({ mode }) {
-  const [isGameOver, setIsGameOver] = useState(false);
+export function GameScreen({ gameMode }) {
+  const [gameStatus, setGameStatus] = useState(null);
   const [level, setLevel] = useState(1);
   const [bestScore, setBestScore] = useState(0);
   const [score, setScore] = useState(0);
   const [clickedColors, setClickedColors] = useState([]);
 
-  function checkForGameOver(id) {
-    return clickedColors.includes(id);
-  }
+  const checkForGameOver = (id) => clickedColors.includes(id);
+
+  const checkForWin = () => {
+    const totalLevels = scorePerLevel.length;
+    if (level < totalLevels) return;
+
+    const nextScore = score + 1;
+    return nextScore === scorePerLevel.at(-1) && level === totalLevels;
+  };
+
+  const assessTurnOutcome = (id) => {
+    if (checkForGameOver(id)) return GAMEOVER;
+    else if (checkForWin()) return GAMEWON;
+  };
 
   function handleCardClick(id, turnResult) {
-    if (isGameOver || turnResult) {
-      return handleGameOver();
-    }
+    if (gameStatus != null) return;
+
+    if (turnResult === GAMEOVER) return handleGameOver();
+    else if (turnResult === GAMEWON) return handleGameWin();
 
     setScore((s) => s + 1);
-
-    if (!updateLevel()) setClickedColors([...clickedColors, id]);
+    updateLevel(id);
   }
 
-  function updateLevel() {
+  function updateLevel(id) {
     const nextScore = score + 1;
     const scoreNeeded = scorePerLevel[level - 1];
     if (nextScore === scoreNeeded) {
@@ -38,19 +49,29 @@ export function GameScreen({ mode }) {
       setClickedColors([]);
       setLevel((l) => l + 1);
       return true;
+    } else {
+      // If level is not updated add the color id to clickedColors
+      setClickedColors([...clickedColors, id]);
     }
+  }
+
+  function handleResetGame() {
+    setGameStatus(null);
+    setLevel(1);
+    setScore(0);
+    setClickedColors([]);
   }
 
   function handleGameOver() {
     if (score > bestScore) setBestScore(score);
-    setIsGameOver(true);
+    setGameStatus(GAMEOVER);
   }
 
-  function handleResetGame() {
-    setIsGameOver(false);
-    setLevel(1);
-    setScore(0);
-    setClickedColors([]);
+  function handleGameWin() {
+    const updatedScore = score + 1;
+    setScore(updatedScore);
+    setBestScore(updatedScore);
+    setGameStatus(GAMEWON);
   }
 
   // Get a random array from data for the current level
@@ -62,7 +83,8 @@ export function GameScreen({ mode }) {
         : scorePerLevel[index] - scorePerLevel[index - 1];
 
     return shuffle(colorsData).slice(0, numberOfCards);
-  }, [level, isGameOver]);
+  }, [level, gameStatus]);
+
   // Re-shuffle the level colors / cards so they are on different position each time
   const shuffledColors = useMemo(() => {
     return shuffle(levelColors);
@@ -72,45 +94,19 @@ export function GameScreen({ mode }) {
     <>
       <GameHeader bestScore={bestScore} score={score} level={level} />
       <CardsList
-        key={isGameOver}
+        key={gameStatus}
         score={score}
         cards={shuffledColors}
-        cardsVariant={mode}
+        cardsVariant={gameMode}
         onCardClick={handleCardClick}
-        checkForGameOver={checkForGameOver}
+        assessTurnOutcome={assessTurnOutcome}
       />
 
-      <Modal isVisible={isGameOver} styles="game-over">
-        <div>
-          <img src={sadFace} alt="Sad face" className="game-over_status-face" />
-        </div>
-        <div>
-          <h2 className="game-over_title">
-            You have <span className="title-underline">LOST!</span>
-          </h2>
-          <p>
-            {" "}
-            Vivamus pulvinar neque in ante pharetra rutrum. Mauris eget
-            elementum turpis. Fusce sollicitudin faucibus massa, in tincidunt
-            augue vestibulum non. Sed eget mi eu lacus pharetra pulvinar. Proin
-            venenatis sagittis arcu, in dignissim enim vulputate ut. Vivamus
-            porttitor, quam quis dictum suscipit, lacus purus pretium ipsum, vel
-            lacinia nisi lectus vel elit. Donec nec sapien ex. Fusce sagittis,
-            nulla eu faucibus porta, leo quam ornare lectus, nec euismod mauris
-            justo in turpis. Vestibulum maximus et mi in pulvinar.
-          </p>
-
-          <div className="game-over_btns-container">
-            <Button
-              variant="accent"
-              styles="text-transform-upper"
-              onClick={handleResetGame}
-            >
-              Play again
-            </Button>
-          </div>
-        </div>
-      </Modal>
+      <WinLoseModal
+        variant={gameStatus}
+        isVisible={gameStatus}
+        handleResetGame={handleResetGame}
+      />
     </>
   );
 }
