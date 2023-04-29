@@ -10,10 +10,12 @@ function App() {
     if (mode) setGameMode(mode);
   }
 
+  const handleBackToMenu = () => setGameMode(null);
+
   return (
     <>
       {gameMode ? (
-        <GameScreen gameMode={gameMode} />
+        <GameScreen gameMode={gameMode} onBackToMenu={handleBackToMenu} />
       ) : (
         <MenuScreen onGameStart={handleGameStart} />
       )}

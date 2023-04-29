@@ -47,7 +47,12 @@ const winData = {
   ),
 };
 
-export function WinLoseModal({ variant, isVisible, handleResetGame }) {
+export function WinLoseModal({
+  variant,
+  isVisible,
+  onResetGame,
+  onBackToMenu,
+}) {
   const data = variant === "lose" ? loseData : winData;
   const { img, title, desc } = data;
 
@@ -66,9 +71,12 @@ export function WinLoseModal({ variant, isVisible, handleResetGame }) {
           <Button
             variant="accent"
             styles="text-transform-upper"
-            onClick={handleResetGame}
+            onClick={onResetGame}
           >
             Play again
+          </Button>
+          <Button variant="secondary" onClick={onBackToMenu}>
+            GO BACK TO MENU
           </Button>
         </div>
       </div>

@@ -9,7 +9,7 @@ const scorePerLevel = [5, 12, 22, 34, 49];
 const GAMEOVER = "lose";
 const GAMEWON = "win";
 
-export function GameScreen({ gameMode }) {
+export function GameScreen({ gameMode, onBackToMenu }) {
   const [gameStatus, setGameStatus] = useState(null);
   const [level, setLevel] = useState(1);
   const [bestScore, setBestScore] = useState(0);
@@ -105,7 +105,8 @@ export function GameScreen({ gameMode }) {
       <WinLoseModal
         variant={gameStatus}
         isVisible={gameStatus}
-        handleResetGame={handleResetGame}
+        onResetGame={handleResetGame}
+        onBackToMenu={onBackToMenu}
       />
     </>
   );
