@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       {gameMode ? (
-        <GameScreen mode={gameMode} />
+        <GameScreen gameMode={gameMode} />
       ) : (
         <MenuScreen onGameStart={handleGameStart} />
       )}
