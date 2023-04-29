@@ -50,8 +50,9 @@ a {
 
 a {
   font-weight: 500;
-  color: hsl(237, 100%, 70%);
   text-decoration: inherit;
+  color: white;
+  font-weight: 600;
 }
 
 a:hover {
@@ -213,32 +214,33 @@ p + p {
 }
 
 /* -------- Game over modal -------- */
-.game-over_title {
-  margin-bottom: 15px;
+.game_modal-title {
+  margin-bottom: 20px;
   font-size: 3.6rem;
   font-weight: 800;
   text-align: center;
+  line-height: 1;
 }
 
-.game-over_status-face {
+.game_modal-face {
   max-width: 125px;
   margin: 0 auto 10px;
 }
 
-.game-over_btns-container {
+.game_modal-btns-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.game-over {
-  max-width: 70ch;
-  padding: 60px 50px;
+.game-modal {
+  max-width: 60ch;
+  padding: 60px 45px;
   font-size: 1.4rem;
-  border: 1px solid hsl(194, 14%, 24%);
+  border: 1px solid hsl(188, 7%, 22%);
   border-radius: 15px;
   backdrop-filter: blur(40px);
-  background-color: hsla(206.7, 11.7%, 15.1%, 0.5);
-  box-shadow: 0px 6px 28px hsla(193, 22%, 55%, 0.2);
+  background-color: hsla(206.7, 11.7%, 15.1%, 0.3);
+  box-shadow: 0px 6px 88px hsla(214.3, 8.4%, 16.3%, 0.32);
 }
 
 /* -------- Utilities -------- */
