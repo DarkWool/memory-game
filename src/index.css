@@ -13,7 +13,8 @@
 }
 
 :root {
-  --accent-color: hsl(320, 78%, 52%);
+  --accent-color: hsl(320, 100%, 57%);
+  --background-color: hsl(225, 18%, 2%);
 }
 
 html {
@@ -22,6 +23,7 @@ html {
 }
 
 body {
+  position: relative;
   height: 100%;
   font-family: Inter, sans-serif;
   font-size: 1.6rem;
@@ -31,7 +33,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   color: white;
-  background-color: hsl(225, 18%, 4%);
+  background-color: var(--background-color);
 }
 
 /* responsive images/videos */
@@ -79,6 +81,7 @@ p + p {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: -1;
 }
 
 /* -------- Menu Screen -------- */
@@ -176,16 +179,12 @@ p + p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   margin-bottom: 50px;
 }
 
 .game_header-middle {
   text-align: center;
-}
-
-.game_header-right {
-  justify-self: right;
 }
 
 .game_header-best {
@@ -194,7 +193,7 @@ p + p {
 }
 
 .game_header-title {
-  font-size: 3.6rem;
+  font-size: 3rem;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 0.9;
@@ -251,10 +250,10 @@ p + p {
   max-width: 60ch;
   padding: 60px 45px;
   font-size: 1.4rem;
-  border: 1px solid hsl(188, 7%, 22%);
+  border: 1px solid hsl(222, 8%, 26%);
   border-radius: 15px;
   backdrop-filter: blur(40px);
-  background-color: hsla(206.7, 11.7%, 15.1%, 0.3);
+  background-color: hsla(0, 0%, 45.9%, 0.16);
   box-shadow: 0px 6px 88px hsla(214.3, 8.4%, 16.3%, 0.32);
 }
 
