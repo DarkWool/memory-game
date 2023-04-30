@@ -160,6 +160,17 @@ p + p {
   margin-bottom: 10px;
 }
 
+.menu_deco-col > .color-card {
+  max-width: 270px;
+  min-height: 300px;
+  font-size: 1.6rem;
+  box-shadow: 0px 4px 125px hsla(var(--shadow-color), 0.4);
+}
+
+.menu_deco-col > .color-card::after {
+  top: 100%;
+}
+
 /* -------- Game Screen -------- */
 .game_header {
   display: grid;

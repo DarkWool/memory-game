@@ -6,7 +6,7 @@ export function ColorCard({
   onClick,
   inlineStyles,
 }) {
-  const cardStyles = `color-card color-card-${variant} ${color.styles}`;
+  const cardStyles = `color-card color-card-${variant} ${color.className}`;
 
   return (
     <button

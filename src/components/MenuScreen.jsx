@@ -4,6 +4,10 @@ import { Tooltip } from "./Tooltip";
 import { colorsData } from "../colorsData";
 import { ColorCard } from "./ColorCard";
 
+const menuColors = colorsData.filter(
+  (color) => color.id === "c68" || color.id === "c54" || color.id === "c57"
+);
+
 export function MenuScreen({ onGameStart }) {
   const tooltipContent = (
     <>
@@ -88,9 +92,9 @@ export function MenuScreen({ onGameStart }) {
         </div>
 
         <div className="menu_deco-col">
-          <ColorCard color={colorsData[0]} inlineStyles={{ "--order": 0 }} />
-          <ColorCard color={colorsData[1]} inlineStyles={{ "--order": 1 }} />
-          <ColorCard color={colorsData[2]} inlineStyles={{ "--order": 2 }} />
+          <ColorCard color={menuColors[0]} inlineStyles={{ "--order": 0 }} />
+          <ColorCard color={menuColors[1]} inlineStyles={{ "--order": 1 }} />
+          <ColorCard color={menuColors[2]} inlineStyles={{ "--order": 2 }} />
         </div>
       </section>
     </div>
