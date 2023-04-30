@@ -1,23 +1,22 @@
 import { useState } from "react";
 import { MenuScreen } from "./components/MenuScreen";
 import { GameScreen } from "./components/GameScreen";
-import colorNamesImg from "./assets/color-names-1x.png";
+import colorNamesImg from "./assets/images/color-names-1x.png";
 
 function App() {
   const [gameMode, setGameMode] = useState(null);
 
-  function handleGameStart(mode) {
-    if (mode) setGameMode(mode);
-  }
-
-  const handleBackToMenu = () => setGameMode(null);
+  const handleChangeGameMode = (mode) => {
+    console.log(mode);
+    mode ? setGameMode(mode) : setGameMode(null);
+  };
 
   return (
     <>
       {gameMode ? (
-        <GameScreen gameMode={gameMode} onBackToMenu={handleBackToMenu} />
+        <GameScreen gameMode={gameMode} onBackToMenu={handleChangeGameMode} />
       ) : (
-        <MenuScreen onGameStart={handleGameStart} />
+        <MenuScreen onGameStart={handleChangeGameMode} />
       )}
       <img
         src={colorNamesImg}

@@ -1,8 +1,8 @@
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 import { Heading } from "./Heading";
-import sadFace from "../assets/disappointed-face.png";
-import grinningFace from "../assets/grinning-face with-smiling-eyes.png";
+import sadFace from "../assets/images/disappointed-face.png";
+import grinningFace from "../assets/images/grinning-face-with-smiling-eyes.png";
 
 const loseData = {
   img: {
