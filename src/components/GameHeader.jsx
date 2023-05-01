@@ -23,7 +23,7 @@ export function GameHeader({ bestScore, score, level }) {
       </div>
 
       <div className="game_header-middle">
-        <h1 className="menu_title game_header-title">
+        <h1 className="main-title game_header-title">
           Remember <br />
           <span className="text-stroke text-transparent">my</span> color
         </h1>

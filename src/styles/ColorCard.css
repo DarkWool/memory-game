@@ -79,6 +79,34 @@
   top: 0%;
 }
 
+@media only screen and (max-width: 1200px) {
+  .color-card-expert {
+    width: 150px;
+    height: 150px;
+  }
+
+  .color-card-normal {
+    max-width: 200px;
+    min-height: 200px;
+  }
+
+  .color-card_content {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .color-card-normal {
+    max-width: 190px;
+    min-height: 150px;
+  }
+
+  .color-card-expert {
+    width: 90px;
+    height: 90px;
+  }
+}
+
 /* -------- Individual color styles -------- */
 .color-card.pink-lavender {
   --card-accent: hsl(339, 30%, 73%);

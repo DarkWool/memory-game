@@ -57,7 +57,7 @@ export function MenuScreen({ onGameStart }) {
           </div>
 
           <div className="menu_content-title">
-            <Heading styles="menu_title">
+            <Heading styles="main-title menu_title">
               Remember <br />
               <span className="text-stroke text-transparent">my</span> color
             </Heading>
