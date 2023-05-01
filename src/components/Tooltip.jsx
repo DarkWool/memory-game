@@ -6,42 +6,60 @@ export function Tooltip({ children, content }) {
   const [isVisible, setIsVisible] = useState(false);
   const tooltipRef = useRef(null);
   const wrapperRef = useRef(null);
+  const arrowRef = useRef(null);
   let timer = useRef(null);
 
   useLayoutEffect(() => {
     const tooltip = tooltipRef.current;
     const wrapper = wrapperRef.current;
+    const arrow = arrowRef.current;
 
     if (isVisible) {
       const resizeTooltip = () => {
         clearTimeout(timer);
-        timer = setTimeout(() => placeTooltip(), 100);
+        timer = setTimeout(() => placeTooltip(), 150);
       };
 
       const placeTooltip = () => {
-        console.log("RESIZED -----%%%%%------");
-        const windowInnerWidth = window.innerWidth;
-        const windowInnerHeight = window.innerHeight;
-
+        tooltip.dataset.placement = "";
         tooltip.classList.add("tooltip-out-of-screen");
 
-        // Get appropiate dimensions of the tooltip element and the button which causes it to be visible
         const { width: tooltipWidth, height: tooltipHeight } =
           tooltip.getBoundingClientRect();
-        const { top, left, width, height } = wrapper.getBoundingClientRect();
+        const {
+          top: wrapperTop,
+          left: wrapperLeft,
+          width: wrapperWidth,
+          height: wrapperHeight,
+        } = wrapper.getBoundingClientRect();
+        const wrapperPosY = window.scrollY + wrapperTop;
 
-        let x = left - tooltipWidth / 2 + width / 2;
-        const y = top - tooltipHeight < 0 ? top + height : top - tooltipHeight;
+        let xPos = wrapperLeft - tooltipWidth / 2 + wrapperWidth / 2;
+        let yPos;
+        if (wrapperTop - tooltipHeight < 0) {
+          tooltip.dataset.placement = "bottom";
+          yPos = wrapperPosY + wrapperHeight;
+        } else {
+          tooltip.dataset.placement = "top";
+          yPos = wrapperPosY - tooltipHeight;
+        }
 
-        // If the tooltip can't be centered due to insufficient viewport width
-        // you have to adjust it and stick it to the right side
-        const widthNeeded = x + tooltipWidth;
-        if (widthNeeded > windowInnerWidth) x += windowInnerWidth - widthNeeded;
+        // If tooltip can't be centered due to insufficient viewport width
+        // adjust it and stick it to the right side of the screen
+        const windowInnerWidth = window.innerWidth;
+        const widthNeeded = xPos + tooltipWidth;
+        if (widthNeeded > windowInnerWidth) {
+          xPos += windowInnerWidth - widthNeeded;
+        }
 
-        tooltip.style.transform = `translate(${x}px, ${y}px)`;
-        tooltip.style.top = "0px";
-        tooltip.style.left = "0px";
+        tooltip.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        placeArrow(wrapperLeft, wrapperWidth);
         tooltip.classList.remove("tooltip-out-of-screen");
+      };
+
+      const placeArrow = (wrapperLeft, wrapperWidth) => {
+        const tooltipLeft = tooltip.getBoundingClientRect().left;
+        arrow.style.left = `${wrapperLeft - tooltipLeft + wrapperWidth / 2}px`;
       };
 
       placeTooltip();
@@ -64,8 +82,6 @@ export function Tooltip({ children, content }) {
     setIsVisible(false);
   }
 
-  console.log("*--- Rendered");
-
   const tooltipMarkup = (
     <div
       className="tooltip"
@@ -74,7 +90,7 @@ export function Tooltip({ children, content }) {
       onMouseLeave={handleOnMouseLeave}
     >
       <div className="tooltip_content">{content}</div>
-      <div className="tooltip_arrow down"></div>
+      <div className="tooltip_arrow" ref={arrowRef}></div>
     </div>
   );
 
