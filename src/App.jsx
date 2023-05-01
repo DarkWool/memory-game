@@ -7,14 +7,16 @@ function App() {
   const [gameMode, setGameMode] = useState(null);
 
   const handleChangeGameMode = (mode) => {
-    console.log(mode);
     mode ? setGameMode(mode) : setGameMode(null);
   };
 
   return (
     <>
       {gameMode ? (
-        <GameScreen gameMode={gameMode} onBackToMenu={handleChangeGameMode} />
+        <GameScreen
+          gameMode={gameMode}
+          onBackToMenu={() => handleChangeGameMode(null)}
+        />
       ) : (
         <MenuScreen onGameStart={handleChangeGameMode} />
       )}
