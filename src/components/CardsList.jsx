@@ -59,8 +59,6 @@ export function CardsList({
                     onCardClick(color.id, turnResult);
                     canClickCards = true;
                   }, 400);
-
-                  console.log(`-- ${color.name}`);
                 }}
               />
             </CSSTransition>
